@@ -4,6 +4,22 @@
     <title>Students</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .table th {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
 {% endblock head %}
 
 {% block body %}
@@ -30,22 +46,44 @@
     <!-- Main Content -->
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card shadow-sm">
-                    <div class="card-body text-center">
-                        <h1 class="mb-3 text-primary">Trang Chủ</h1>
-                        <p class="lead">Chào mừng bạn đến với hệ thống quản lý sinh viên!</p>
-                        <a href="/admin" class="btn btn-primary mt-3">
-                            <i class="bi bi-box-arrow-in-right"></i> Giao Diện Trang Admin
-                        </a>
-                        {% for full_name, student_class in student %}
-                            <p>{{ full_name }} - {{ student_class }}</p>
-                        {% endfor %}
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Danh Sách Sinh Viên</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center text-muted">Chào mừng bạn đến với hệ thống quản lý sinh viên!</p>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped text-center">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Họ và Tên</th>
+                                        <th>Lớp</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for full_name, student_class in student %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>{{ full_name }}</td>
+                                            <td>{{ student_class }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center mt-3">
+                            <a href="/admin" class="btn btn-primary">
+                                <i class="bi bi-box-arrow-in-right"></i> Giao Diện Trang Admin
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS (Optional) -->
+    
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock body %}

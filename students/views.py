@@ -16,6 +16,9 @@ def index(request):
         "student": student
     })
 
+def custom_404_view(request, exception):
+    return render(request, "students/404.html", status=404)
+
 class LoginStudent(APIView):
     permission_classes = [AllowAny]
 
